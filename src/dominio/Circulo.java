@@ -1,37 +1,22 @@
 package dominio;
 
-public class Circulo {
+public class Circulo extends Figura {
 
 	private String nombre;
 	private String color;
 
 	public Circulo(String nombre) {
-		this.nombre = nombre;
+		super(nombre);
+		// TODO Auto-generated constructor stub
 	}
 
 	public Circulo(String nombre, String color) {
-		this.nombre = nombre;
-		this.color = color;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		super(nombre, color);
+		// TODO Auto-generated constructor stub
 	}
 
 	public String obtenerNombre() {
 		return this.nombre;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
 	}
 
 	public String obtenerColor() {

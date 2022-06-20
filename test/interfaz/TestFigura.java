@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import dominio.Circulo;
 import dominio.Cuadrado;
+import dominio.Figura;
 
 public class TestFigura {
 
@@ -38,6 +39,22 @@ public class TestFigura {
 		Cuadrado cuadradito = new Cuadrado("cuadrado", "violeta");
 		assertEquals("violeta", cuadradito.getColor());
 	}
+	@Test
+	public void queSePuedaCrearUnaFiguraDeColorBlanco() {
+		String nombre = "figura";
+		String color = "blanco";
+		Figura figura = new Figura(nombre, color);
+		String valorObtenido = figura.getColor();
+		assertEquals(color, valorObtenido);
+	}
 
+	@Test
+	public void queSePuedaObtenerElNombreDeUnaFiguraCuadrada() {
+		String nombre = "figura";
+		String color = "blanco";
+		Figura cuadrado = new Cuadrado(nombre, color);
+		String valorObtenido = cuadrado.getColor();
+		assertEquals(nombre, valorObtenido);
+	}
 	
 }
