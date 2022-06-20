@@ -14,7 +14,7 @@ public class TestFigura {
 	public void queSePuedaInformarElNombreDeUnaFiguraCirculo() {
 		String nombre = "circulo";
 		Circulo circulito = new Circulo(nombre);
-		String nombreObtenido = circulito.obtenerNombre();
+		String nombreObtenido = circulito.getNombre();
 		assertEquals(nombre, nombreObtenido);
 	}
 
@@ -30,7 +30,7 @@ public class TestFigura {
 		String nombre = "circulo";
 		String color = "azul";
 		Circulo circulito = new Circulo(nombre, color);
-		String colorObtenido = circulito.obtenerColor();
+		String colorObtenido = circulito.getColor();
 		assertEquals(color, colorObtenido);
 	}
 
@@ -39,14 +39,16 @@ public class TestFigura {
 		Cuadrado cuadradito = new Cuadrado("cuadrado", "violeta");
 		assertEquals("violeta", cuadradito.getColor());
 	}
-	@Test
+
+	/*@Test
 	public void queSePuedaCrearUnaFiguraDeColorBlanco() {
 		String nombre = "figura";
 		String color = "blanco";
 		Figura figura = new Figura(nombre, color);
+		// las clases abstractas no pueden ser instanciadas 
 		String valorObtenido = figura.getColor();
 		assertEquals(color, valorObtenido);
-	}
+	}*/
 
 	@Test
 	public void queSePuedaObtenerElNombreDeUnaFiguraCuadrada() {
@@ -54,7 +56,18 @@ public class TestFigura {
 		String color = "blanco";
 		Figura cuadrado = new Cuadrado(nombre, color);
 		String valorObtenido = cuadrado.getColor();
-		assertEquals(nombre, valorObtenido);
+		assertEquals(color, valorObtenido);
 	}
-	
+
+	@Test
+	public void queSePuedaCalcularElAreaDeUnaFigura() {
+		Double base = 2.0;
+		Double altura = 4.0;
+		Double areaEsperada = 8.0;
+		Figura cuadrado = new Cuadrado("Cuadrado", "Verde");
+		Double areaObtenido = cuadrado.calcularArea(altura, base);
+
+		assertEquals(areaEsperada, areaObtenido);
+	}
+
 }

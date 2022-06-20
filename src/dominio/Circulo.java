@@ -15,12 +15,10 @@ public class Circulo extends Figura {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String obtenerNombre() {
-		return this.nombre;
-	}
-
-	public String obtenerColor() {
-		return this.color;
+	@Override
+	public Double calcularArea(Double base, Double altura) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

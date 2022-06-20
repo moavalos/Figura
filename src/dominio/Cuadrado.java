@@ -15,4 +15,9 @@ public class Cuadrado extends Figura {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public Double calcularArea(Double base, Double altura) {
+		return base * altura;
+	}
+
 }
