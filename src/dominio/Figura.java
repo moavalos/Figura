@@ -1,9 +1,12 @@
 package dominio;
 
-public abstract class Figura {
-	
+public abstract class Figura implements Comparable<Figura>, Movible {
+
 	private String nombre;
 	private String color;
+	private Double ladoMayor;
+	private Double ladoMenor;
+	private Punto posicion;
 
 	public Figura(String nombre) {
 		this.nombre = nombre;
@@ -12,6 +15,22 @@ public abstract class Figura {
 	public Figura(String nombre, String color) {
 		this.nombre = nombre;
 		this.color = color;
+	}
+
+	public Figura(Punto posicion, Double ladoMayor, Double ladoMenor) {
+		this.posicion = posicion;
+		this.ladoMayor = ladoMayor;
+		this.ladoMenor = ladoMenor;
+	}
+
+	public abstract Double calcularArea();
+
+	@Override
+	public void mover(double deltaX, double deltaY) {
+		Punto nuevoPunto = getPosicion();
+		nuevoPunto.setEjeX(nuevoPunto.getEjeX() + deltaX);
+		nuevoPunto.setEjeY(nuevoPunto.getEjeY() + deltaY);
+		setPosicion(nuevoPunto);
 	}
 
 	public String getNombre() {
@@ -27,8 +46,31 @@ public abstract class Figura {
 	}
 
 	public void setColor(String color) {
-		this.color = color;	
+		this.color = color;
 	}
 
-	public abstract Double calcularArea(Double base, Double altura);
+	public Double getLadoMayor() {
+		return ladoMayor;
+	}
+
+	public void setLadoMayor(Double ladoMayor) {
+		this.ladoMayor = ladoMayor;
+	}
+
+	public Double getLadoMenor() {
+		return ladoMenor;
+	}
+
+	public void setLadoMenor(Double ladoMenor) {
+		this.ladoMenor = ladoMenor;
+	}
+
+	public Punto getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(Punto posicion) {
+		this.posicion = posicion;
+	}
+
 }

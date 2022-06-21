@@ -1,23 +1,40 @@
 package dominio;
 
-public class Cuadrado extends Figura {
+public class Cuadrado extends Rectangulo {
 
 	private String nombre;
 	private String color;
 
-	public Cuadrado(String nombre) {
-		super(nombre);
-		// TODO Auto-generated constructor stub
+	public Cuadrado(String nombre, Punto posicion, Double ladoMayor, Double ladoMenor ) {
+		super(posicion, ladoMayor, ladoMayor);
+		this.nombre = nombre;
 	}
 
-	public Cuadrado(String nombre, String color) {
-		super(nombre, color);
-		// TODO Auto-generated constructor stub
+	public Cuadrado(String nombre, String color, Punto posicion, Double ladoMayor, Double ladoMenor) {
+		super(posicion, ladoMayor, ladoMayor);
+		this.nombre = nombre;
+		this.color = color;
+	}
+
+	public Cuadrado(Punto posicion, Double ladoMayor, Double ladoMenor) {
+		super(posicion, ladoMayor, ladoMayor);
+
+	}
+
+	public Cuadrado(Punto posicion, double ladoMayor) {
+		super(posicion, ladoMayor, ladoMayor);
+
 	}
 
 	@Override
-	public Double calcularArea(Double base, Double altura) {
-		return base * altura;
+	public Double calcularArea() { // lado mayor = base, lado menor = altura (o al reves)
+		return getLadoMayor() * getLadoMenor();
+	}
+
+	@Override
+	public int compareTo(Figura o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
