@@ -1,31 +1,31 @@
 package dominio;
 
-public class Circulo extends Figura {
+public class Circulo extends Elipse {
 
 	private String nombre;
 	private String color;
 	private Double radio;
 
-	public Circulo(String nombre) {
-		super(nombre);
+	public Circulo(String nombre, Punto posicion, Double radio, Double radio2) {
+		super(posicion, radio, radio);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Circulo(String nombre, String color) {
-		super(nombre, color);
+	public Circulo(String nombre, String color, Punto posicion, Double radio, Double radio2) {
+		super(posicion, radio, radio);
 		// TODO Auto-generated constructor stub
 	}
 	public Circulo(Punto posicion, Double radio, Double radio2) {
 		super(posicion, radio, radio);
 	}
 	
-	public Circulo(Punto posicion, double radio) {
+	public Circulo(Punto posicion, Double radio) {
 		super(posicion, radio, radio);
 	}
 
 	@Override
 	public Double calcularArea() {
-		return Math.PI * Math.pow(radio, 2);
+		return Math.PI * Math.pow(this.radio, 2);
 	}
 
 	@Override

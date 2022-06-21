@@ -73,4 +73,15 @@ public abstract class Figura implements Comparable<Figura>, Movible {
 		this.posicion = posicion;
 	}
 
+	@Override
+	public int compareTo(Figura o) {
+		int resultado = 0;
+		if (this.calcularArea() < o.calcularArea()) {
+			resultado = -1;
+		} else if (this.calcularArea() > o.calcularArea()) {
+			resultado = 1;
+		}
+		return resultado;
+	}
+
 }

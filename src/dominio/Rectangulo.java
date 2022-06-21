@@ -1,11 +1,12 @@
 package dominio;
 
 public class Rectangulo extends Figura {
-	
+
 	private Punto esquinaSupDer;
 
-	public Rectangulo(Punto posicion, double ladoMayor, double ladoMenor) {
+	public Rectangulo(Punto posicion, Double ladoMayor, Double ladoMenor) {
 		super(posicion, ladoMayor, ladoMenor);
+		calcularEsqSupDer();
 
 	}
 
@@ -22,6 +23,23 @@ public class Rectangulo extends Figura {
 
 	public Punto getEsquinaSupDer() {
 		return esquinaSupDer;
+	}
+
+	public void setEsquinaSupDer(Punto esquinaSupDer) {
+		esquinaSupDer = esquinaSupDer;
+	}
+
+	private void calcularEsqSupDer() {
+		double ejeX = getPosicion().getEjeX() + getLadoMayor();
+		double ejeY = getPosicion().getEjeY() + getLadoMenor();
+		Punto punto = new Punto(ejeX, ejeY);
+		this.esquinaSupDer = punto;
+	}
+
+	@Override
+	public void setPosicion(Punto posicion) {
+		super.setPosicion(posicion);
+		calcularEsqSupDer();
 	}
 
 }

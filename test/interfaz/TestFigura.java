@@ -2,6 +2,10 @@ package interfaz;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.Test;
 
 import dominio.Circulo;
@@ -16,7 +20,8 @@ public class TestFigura {
 	@Test
 	public void queSePuedaInformarElNombreDeUnaFiguraCirculo() {
 		String nombre = "circulo";
-		Circulo circulito = new Circulo(nombre);
+		Punto centro = new Punto(1.0, 1.0);
+		Circulo circulito = new Circulo(nombre, centro, 0.0, 0.0);
 		String nombreObtenido = circulito.getNombre();
 		assertEquals(nombre, nombreObtenido);
 	}
@@ -24,7 +29,8 @@ public class TestFigura {
 	@Test
 
 	public void queSePuedaInformarElNombreDeUnaFiguraCuadrada() {
-		Cuadrado cuadradito = new Cuadrado("cuadrado", null, null, null);
+		Punto centro = new Punto(1.0, 1.0);
+		Cuadrado cuadradito = new Cuadrado("cuadrado", centro, 0.0, 0.0);
 		assertEquals("cuadrado", cuadradito.getNombre());
 	}
 
@@ -32,14 +38,16 @@ public class TestFigura {
 	public void queSePuedaInformarElColorDeUnaFiguraCirculo() {
 		String nombre = "circulo";
 		String color = "azul";
-		Circulo circulito = new Circulo(nombre, color);
+		Punto centro = new Punto(1.0, 1.0);
+		Circulo circulito = new Circulo(nombre, color, centro, 0.0, 0.0);
 		String colorObtenido = circulito.getColor();
 		assertEquals(color, colorObtenido);
 	}
 
 	@Test
 	public void queSePuedaInformarElColorDeUnaFiguraCuadrada() {
-		Cuadrado cuadradito = new Cuadrado("cuadrado", "violeta", null, null, null);
+		Punto centro = new Punto(1.0, 1.0);
+		Cuadrado cuadradito = new Cuadrado("cuadrado", "violeta", centro, 0.0, 0.0);
 		assertEquals("violeta", cuadradito.getColor());
 	}
 
@@ -54,7 +62,8 @@ public class TestFigura {
 	public void queSePuedaObtenerElNombreDeUnaFiguraCuadrada() {
 		String nombre = "figura";
 		String color = "blanco";
-		Figura cuadrado = new Cuadrado(nombre, color, null, null, null);
+		Punto centro = new Punto(1.0, 1.0);
+		Figura cuadrado = new Cuadrado(nombre, color, centro, 0.0, 0.0);
 		String valorObtenido = cuadrado.getColor();
 		assertEquals(color, valorObtenido);
 	}
@@ -64,7 +73,8 @@ public class TestFigura {
 		Double base = 2.0;
 		Double altura = 4.0;
 		Double areaEsperada = 8.0;
-		Figura cuadrado = new Cuadrado("Cuadrado", "Verde", null, null, null);
+		Punto centro = new Punto(1.0, 1.0);
+		Figura cuadrado = new Cuadrado("Cuadrado", "Verde", centro, 0.0, 0.0);
 		assertEquals(areaEsperada, cuadrado.calcularArea());
 	}
 
@@ -87,14 +97,14 @@ public class TestFigura {
 	@Test
 	public void crearUnRectanguloEn1_1ConBase2YAltura1TieneArea2() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Rectangulo rectangulo = new Rectangulo(esqInfIzq, 2, 1);
+		Rectangulo rectangulo = new Rectangulo(esqInfIzq, 2.0, 1.0);
 		assertEquals(2, rectangulo.calcularArea(), 0.001);
 	}
 
 	@Test
 	public void crearUnRectanguloEn1_1ConBase2YAltura1TieneEsquinaDerechaEn3_2() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Rectangulo rec = new Rectangulo(esqInfIzq, 2, 1);
+		Rectangulo rec = new Rectangulo(esqInfIzq, 2.0, 1.0);
 		assertEquals(3, rec.getEsquinaSupDer().getEjeX(), 0.001);
 		assertEquals(2, rec.getEsquinaSupDer().getEjeY(), 0.001);
 	}
@@ -102,7 +112,7 @@ public class TestFigura {
 	@Test
 	public void mover3_1UnRectanguloEn1_1LoLlevaA_3_1() {
 		Punto EsqInfIzq = new Punto(1.0, 1.0);
-		Rectangulo rec = new Rectangulo(EsqInfIzq, 2, 1);
+		Rectangulo rec = new Rectangulo(EsqInfIzq, 2.0, 1.0);
 		rec.mover(3, 1);
 		assertEquals(4, rec.getPosicion().getEjeX(), 0.001);
 		assertEquals(2, rec.getPosicion().getEjeY(), 0.001);
@@ -111,7 +121,7 @@ public class TestFigura {
 	@Test
 	public void mover3_1UnRectanguloEn1_1ConBase2YAltura1ColocaLaEsqSupDerEn_6_3() {
 		Punto EsqInfIzq = new Punto(1.0, 1.0);
-		Rectangulo rec = new Rectangulo(EsqInfIzq, 2, 1);
+		Rectangulo rec = new Rectangulo(EsqInfIzq, 2.0, 1.0);
 		rec.mover(3, 1);
 		assertEquals(6, rec.getEsquinaSupDer().getEjeX(), 0.001);
 		assertEquals(3, rec.getEsquinaSupDer().getEjeY(), 0.001);
@@ -120,14 +130,14 @@ public class TestFigura {
 	@Test
 	public void crearUnCiculoEn1_1ConRadio2TieneArea12_566() {
 		Punto centro = new Punto(1.0, 1.0);
-		Circulo cir = new Circulo(centro, 2);
+		Circulo cir = new Circulo(centro, 2.0, 0.0);
 		assertEquals(12.566, cir.calcularArea(), 0.001);
 	}
 
 	@Test
 	public void mover3_1UnCirculoEn1_1conRadio2LoLlevaA4_2rr() {
 		Punto centro = new Punto(1.0, 1.0);
-		Circulo cir = new Circulo(centro, 2);
+		Circulo cir = new Circulo(centro, 2.0);
 		cir.mover(3, 1);
 		assertEquals(4, cir.getPosicion().getEjeX(), 0.001);
 		assertEquals(2, cir.getPosicion().getEjeY(), 0.001);
@@ -136,14 +146,14 @@ public class TestFigura {
 	@Test
 	public void crearUnCuadradoEn1_1ConLado2TieneArea4() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Cuadrado cua = new Cuadrado(esqInfIzq, 2);
+		Cuadrado cua = new Cuadrado(esqInfIzq, 2.0);
 		assertEquals(4, cua.calcularArea(), 0.001);
 	}
 
 	@Test
 	public void crearUnCuadradoEn1_1ConLado2TieneEsquinaDerechaEn3_3() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Cuadrado cua = new Cuadrado(esqInfIzq, 2);
+		Cuadrado cua = new Cuadrado(esqInfIzq, 2.0);
 		assertEquals(3, cua.getEsquinaSupDer().getEjeX(), 0.001);
 		assertEquals(3, cua.getEsquinaSupDer().getEjeY(), 0.001);
 	}
@@ -151,7 +161,7 @@ public class TestFigura {
 	@Test
 	public void mover3_1UnCuadradoEn1_1LoLlevaA_3_1() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Cuadrado cua = new Cuadrado(esqInfIzq, 2);
+		Cuadrado cua = new Cuadrado(esqInfIzq, 2.0);
 		cua.mover(3, 1);
 		assertEquals(4, cua.getPosicion().getEjeX(), 0.001);
 		assertEquals(2, cua.getPosicion().getEjeY(), 0.001);
@@ -160,10 +170,33 @@ public class TestFigura {
 	@Test
 	public void mover3_1UnCuadradoEn1_1ConLado2ColocaEsqSupDerEn_6_4() {
 		Punto esqInfIzq = new Punto(1.0, 1.0);
-		Cuadrado cua = new Cuadrado(esqInfIzq, 2);
+		Cuadrado cua = new Cuadrado(esqInfIzq, 2.0);
 		cua.mover(3, 1);
 		assertEquals(6, cua.getEsquinaSupDer().getEjeX(), 0.001);
 		assertEquals(4, cua.getEsquinaSupDer().getEjeY(), 0.001);
+	}
+
+	@Test
+	public void testColeccionOrdenada() {
+		Punto centro = new Punto(1.0, 1.0);
+		Elipse eli = new Elipse(centro, 2, 1);
+
+		Punto esquinaInferiorIzquierda = new Punto(1.0, 1.0);
+		Rectangulo rec = new Rectangulo(esquinaInferiorIzquierda, 2.0, 1.1);
+
+		List<Figura> lista = new ArrayList<Figura>();
+
+		lista.add(eli);
+		lista.add(rec);
+		
+		Collections.sort(lista); //  ordena los elementos presentes en la lista especificada de Colección en orden ascendente
+
+		List<Figura> listaEsperada = new ArrayList<Figura>();
+		listaEsperada.add(rec);
+		listaEsperada.add(eli);
+
+		assertEquals(listaEsperada, lista);
+
 	}
 
 }

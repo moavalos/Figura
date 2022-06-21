@@ -21,7 +21,7 @@ public class Cuadrado extends Rectangulo {
 
 	}
 
-	public Cuadrado(Punto posicion, double ladoMayor) {
+	public Cuadrado(Punto posicion, Double ladoMayor) {
 		super(posicion, ladoMayor, ladoMayor);
 
 	}
